@@ -12,7 +12,7 @@ namespace iDeviceCrackr
     public class Program
     {
 
-        static string deviceType = null;
+        static string deviceName = null;
         static string hostName = null;
         static int port = 22;
         static string username = "root";
@@ -77,7 +77,8 @@ namespace iDeviceCrackr
             client = new SshClient(hostName, port, username, password);
             client.Connect();
             commands = new Commands(client);
-            Console.WriteLine(commands.retrieveDeviceName.Execute());
+            deviceName = commands.retrieveDeviceName.Execute();
+            Console.WriteLine(deviceName);
 
             ShowMenu();
         }
