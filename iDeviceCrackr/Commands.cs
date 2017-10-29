@@ -12,7 +12,13 @@ namespace iDeviceCrackr
         }
         
         // Device information commands
-        public SshCommand retrieveDeviceName = client.CreateCommand("uname -m");
+        public SshCommand retrieveDeviceType = client.CreateCommand("uname -m");
+        public SshCommand retrieveDeviceName = client.CreateCommand("sbdevice -n");
+        public SshCommand retireveDeviceUDID = client.CreateCommand("sbdevice -u");
+
+        // System information commands
+        public SshCommand retrieveSystemName = client.CreateCommand("sbdevice -N");
+        public SshCommand retrieveSystemVersion = client.CreateCommand("sbdevice V");
 
         // Device power commands
         public SshCommand rebootDevice = client.CreateCommand("reboot");

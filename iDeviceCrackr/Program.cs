@@ -9,7 +9,7 @@ namespace iDeviceCrackr
     public class Program
     {
 
-        static string deviceName = null;
+        static string deviceType = null;
         static string hostName = null;
         static int port = 22;
         static string username = "root";
@@ -66,8 +66,6 @@ namespace iDeviceCrackr
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("IP Address: ");
             hostName = Console.ReadLine();
-            Console.Write("Port: ");
-            port = int.Parse(Console.ReadLine());
             Console.Write("Root password: ");
             password = Console.ReadLine();
             Console.ResetColor();
@@ -81,8 +79,9 @@ namespace iDeviceCrackr
 
             client = new SshClient(hostName, port, username, password);
             client.Connect();
+            Commands.client = client;
             commands = new Commands(client);
-            deviceName = commands.retrieveDeviceName.Execute();
+            deviceType = commands.retrieveDeviceType.Execute();
 
             ShowMenu();
         }
@@ -93,7 +92,7 @@ namespace iDeviceCrackr
             Console.Clear();
             DisplaySplashText();
 
-            Console.WriteLine($"Connected to {deviceName}");
+            Console.WriteLine($"Connected to {deviceType}");
             string menuItems = 
                 "[0] Power Options" + "\n" +
                 "[1] Device Information" + "\n" +
@@ -102,6 +101,7 @@ namespace iDeviceCrackr
                 ;
 
             Console.WriteLine(menuItems);
+            Console.ReadLine();
 
         }
 
