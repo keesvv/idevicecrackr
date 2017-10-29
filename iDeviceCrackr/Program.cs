@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
+using System.IO;
 
 using Renci.SshNet;
-using System.IO;
 
 namespace iDeviceCrackr
 {
@@ -35,7 +32,6 @@ namespace iDeviceCrackr
 
             // Initialize iDeviceCrackr
             ShowSplashScreen();
-            ShowMenu();
             Connect();
 
         }
@@ -43,16 +39,20 @@ namespace iDeviceCrackr
         static void ShowSplashScreen()
         {
 
+            Console.ForegroundColor = ConsoleColor.Red;
             using (var reader = new StringReader(splashText))
             {
                 for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                 {
                     Console.WriteLine(line);
-                    Thread.Sleep(50);
+                    Thread.Sleep(80);
                 }
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(300);
+            Console.ResetColor();
+            Console.Clear();
+            DisplaySplashText();
 
         }
 
@@ -63,22 +63,26 @@ namespace iDeviceCrackr
 
         static void Connect()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("IP Address: ");
             hostName = Console.ReadLine();
             Console.Write("Port: ");
             port = int.Parse(Console.ReadLine());
             Console.Write("Root password: ");
             password = Console.ReadLine();
+            Console.ResetColor();
 
             Console.Clear();
             DisplaySplashText();
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Connecting to remote device...");
+            Console.ResetColor();
+
             client = new SshClient(hostName, port, username, password);
             client.Connect();
             commands = new Commands(client);
             deviceName = commands.retrieveDeviceName.Execute();
-            Console.WriteLine(deviceName);
 
             ShowMenu();
         }
@@ -89,9 +93,12 @@ namespace iDeviceCrackr
             Console.Clear();
             DisplaySplashText();
 
-            Console.WriteLine($"Connected to ");
+            Console.WriteLine($"Connected to {deviceName}");
             string menuItems = 
-                "[0] Power Options" + "\n"
+                "[0] Power Options" + "\n" +
+                "[1] Device Information" + "\n" +
+                "[2] Install app from file" + "\n" +
+                "[3] "
                 ;
 
             Console.WriteLine(menuItems);
