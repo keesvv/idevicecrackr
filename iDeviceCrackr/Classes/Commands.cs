@@ -13,20 +13,20 @@ namespace iDeviceCrackr
         
         // Device information commands
         public SshCommand RetrieveDeviceType = client.CreateCommand("uname -m");
-        public SshCommand retrieveDeviceName = client.CreateCommand("sbdevice -n");
-        public SshCommand retireveDeviceUDID = client.CreateCommand("sbdevice -u");
+        public SshCommand RetrieveDeviceName = client.CreateCommand("sbdevice -n");
+        public SshCommand RetrieveDeviceUDID = client.CreateCommand("sbdevice -u");
 
         // System information commands
-        public SshCommand retrieveSystemName = client.CreateCommand("sbdevice -N");
-        public SshCommand retrieveSystemVersion = client.CreateCommand("sbdevice V");
+        public SshCommand RetrieveSystemName = client.CreateCommand("sbdevice -N");
+        public SshCommand RetrieveSystemVersion = client.CreateCommand("sbdevice -V");
 
         // Device power commands
-        public SshCommand rebootDevice = client.CreateCommand("reboot");
-        public SshCommand shutdownDevice = client.CreateCommand("shutdown");
-        public SshCommand respringDevice = client.CreateCommand("killall SpringBoard");
+        public SshCommand RebootDevice = client.CreateCommand("reboot");
+        public SshCommand ShutdownDevice = client.CreateCommand("halt");
+        public SshCommand RespringDevice = client.CreateCommand("killall SpringBoard");
 
         // App interaction commands
-        public SshCommand openSettings = client.CreateCommand("open com.apple.Preferences");
+        public SshCommand OpenSettings = client.CreateCommand("open com.apple.Preferences");
         
     }
 }

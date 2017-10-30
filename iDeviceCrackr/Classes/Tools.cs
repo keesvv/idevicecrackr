@@ -2,6 +2,8 @@
 using System.IO;
 using System.Threading;
 
+using iDeviceCrackr.Classes;
+
 namespace iDeviceCrackr
 {
     public class Tools
@@ -15,6 +17,8 @@ namespace iDeviceCrackr
             @" |_|_____/ \___| \_/ |_|\___\___|\_____|_|  \__,_|\___|_|\_\_|   " + "\n" +
             @"                                                                 " + "\n" +
             "";
+
+        public static string StringIndent { get; set; } = "   ";
 
         public static void ShowSplashScreen()
         {
@@ -37,6 +41,22 @@ namespace iDeviceCrackr
         public static void DisplaySplashText()
         {
             Console.WriteLine(SplashText);
+        }
+
+        public static void ShowMainMenu()
+        {
+            Console.Clear();
+            DisplaySplashText();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(StringIndent + " ■  ");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine($"Connected to {iDeviceCrackr.DeviceName}");
+            Console.ResetColor();
+
+            DisplayMenu.MainMenu.ShowMenu(false);
         }
     }
 }

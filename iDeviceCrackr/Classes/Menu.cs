@@ -19,20 +19,23 @@ namespace iDeviceCrackr
             Items = items;
         }
 
-        public void ShowMenu()
+        public void ShowMenu(bool clearConsole = true)
         {
-            Console.ResetColor();
-            Console.Clear();
-            Tools.DisplaySplashText();
-
+            if(clearConsole)
+            {
+                Console.ResetColor();
+                Console.Clear();
+                Tools.DisplaySplashText();
+            }
+            
             if (MenuTitleColor.HasValue) Console.ForegroundColor = MenuTitleColor.Value;
-            Console.WriteLine($"-=+ [ {MenuTitle} ] +=-");
+            Console.WriteLine(Tools.StringIndent + $"-=+ [ {MenuTitle} ] +=-");
             Console.ResetColor();
 
             foreach (MenuItem item in Items)
             {
                 if (item.ForeColor.HasValue) Console.ForegroundColor = item.ForeColor.Value;
-                Console.WriteLine($"[{item.Identifier}] {item.Title}");
+                Console.WriteLine(Tools.StringIndent + $"[{item.Identifier}] {item.Title}");
                 Console.ResetColor();
             }
 
