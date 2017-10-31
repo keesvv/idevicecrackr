@@ -5,6 +5,9 @@ A full-featured tool for modifying a remote jailbroken iDevice.
 iDeviceCrackr is a useful tool that you can use to change your iDevice the way you want, remotely.
 The only thing you need is a jailbroken iDevice and a Wi-Fi connection.
 
+#### How does it work?
+iDeviceCrackr sets up SSH connection between your computer and your iDevice. SSH stands for Secure Shell, that means all data transferred between iDeviceCrackr and your iDevice is encrypted, safe and secure!
+
 #### Current program features (for now)
 - Show an overview of the device's information
 - Respring/Reboot/Shutdown/Enter Safe Mode remotely
