@@ -41,8 +41,32 @@ namespace iDeviceCrackr.Classes
         public static Menu PowerOptionsMenu = new Menu("Power Options", ConsoleColor.Red, new List<MenuItem>()
         {
             new MenuItem(0, "Respring", null, ConsoleKey.D0, new Action(delegate() { Commands.RespringDevice.Execute(); })),
-            new MenuItem(1, "Reboot", null, ConsoleKey.D1, new Action(delegate() { Commands.RebootDevice.Execute(); Client.Disconnect(); })),
-            new MenuItem(2, "Shutdown", null, ConsoleKey.D2, new Action(delegate() { Commands.ShutdownDevice.Execute(); Client.Disconnect(); }))
+            new MenuItem(1, "Reboot", null, ConsoleKey.D1, new Action(delegate()
+            {
+                try
+                {
+                    Commands.RebootDevice.Execute();
+                    Tools.ShowMainMenu("Your device is rebooting.", true);
+                } catch(Exception) { }                
+            })),
+
+            new MenuItem(2, "Shutdown", null, ConsoleKey.D2, new Action(delegate()
+            {
+                try
+                {
+                    Commands.ShutdownDevice.Execute();
+                    Tools.ShowMainMenu("Your device is shutting down.", true);
+                } catch(Exception) { }
+            })),
+
+            new MenuItem(3, "Safe Mode", null, ConsoleKey.D3, new Action(delegate()
+            {
+                try
+                {
+                    Commands.SafeModeDevice.Execute();
+                    Tools.ShowMainMenu("Your device is entering Safe Mode.", true);
+                } catch(Exception) { }
+            }))
         });
     }
 }

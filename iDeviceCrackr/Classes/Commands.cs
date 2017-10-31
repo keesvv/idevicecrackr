@@ -24,6 +24,8 @@ namespace iDeviceCrackr
         public SshCommand RebootDevice = client.CreateCommand("reboot");
         public SshCommand ShutdownDevice = client.CreateCommand("halt");
         public SshCommand RespringDevice = client.CreateCommand("killall SpringBoard");
+        public SshCommand SafeModeDevice = client.CreateCommand("touch /var/mobile/Library/Preferences/" +
+            "com.saurik.mobilesubstrate.dat && killall SpringBoard");
 
         // App interaction commands
         public SshCommand OpenSettings = client.CreateCommand("open com.apple.Preferences");

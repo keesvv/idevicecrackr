@@ -43,13 +43,27 @@ namespace iDeviceCrackr
             Console.WriteLine(SplashText);
         }
 
-        public static void ShowMainMenu()
+        public static void ShowMainMenu(string warningMessage = "", bool warnForNoResponse = false)
         {
             Console.Clear();
             DisplaySplashText();
 
+            if(warningMessage != "")
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(StringIndent + "■  Warning: " + warningMessage);
+                Console.ResetColor();
+            }
+
+            if(warnForNoResponse)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(StringIndent + "■  Please note that the program may become unresponsive");
+                Console.WriteLine(StringIndent + "   and will not respond on further commands.");
+            }
+
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(StringIndent + " ■  ");
+            Console.Write(StringIndent + "■  ");
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.DarkGray;

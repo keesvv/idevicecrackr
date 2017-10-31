@@ -21,6 +21,12 @@ namespace iDeviceCrackr
 
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += (o, ev) =>
+            {
+                Client.Disconnect();
+                Client.Dispose();
+            };
+
             Tools.ShowSplashScreen();
             SSH.Connect();
 
