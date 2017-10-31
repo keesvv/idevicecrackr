@@ -18,19 +18,19 @@ namespace iDeviceCrackr.Classes
             {
                 Console.ResetColor();
                 Console.Clear();
-                Tools.DisplaySplashText();
+                Tools.ShowSplashText();
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine(Tools.StringIndent + "Device Information\n");
+                Console.WriteLine(Tools.Indent + "Device Information\n");
                 Console.ResetColor();
 
                 Console.WriteLine(
-                    Tools.StringIndent + $"Device Type: {Commands.RetrieveDeviceType.Execute()}" +
-                    Tools.StringIndent + $"Device Name: {Commands.RetrieveDeviceName.Execute()}" +
-                    Tools.StringIndent + $"Device UDID: {Commands.RetrieveDeviceUDID.Execute()}\n" +
-                    Tools.StringIndent + $"System Name: {Commands.RetrieveSystemName.Execute()}" +
-                    Tools.StringIndent + $"System Version: {Commands.RetrieveSystemVersion.Execute()}\n" +
-                    Tools.StringIndent + $"Press any key to return to the previous screen."
+                    Tools.Indent + $"Device Type: {Commands.RetrieveDeviceType.Execute()}" +
+                    Tools.Indent + $"Device Name: {Commands.RetrieveDeviceName.Execute()}" +
+                    Tools.Indent + $"Device UDID: {Commands.RetrieveDeviceUDID.Execute()}\n" +
+                    Tools.Indent + $"System Name: {Commands.RetrieveSystemName.Execute()}" +
+                    Tools.Indent + $"System Version: {Commands.RetrieveSystemVersion.Execute()}\n" +
+                    Tools.Indent + $"Press any key to return to the previous screen."
                     );
 
                 Console.ReadKey(true);
@@ -46,8 +46,8 @@ namespace iDeviceCrackr.Classes
                 try
                 {
                     Commands.RebootDevice.Execute();
-                    Tools.ShowMainMenu("Your device is rebooting.", true);
-                } catch(Exception) { }                
+                } catch(Exception) { }
+                Tools.ShowMainMenu(null, "Your device is rebooting.", true);
             })),
 
             new MenuItem(2, "Shutdown", null, ConsoleKey.D2, new Action(delegate()
@@ -55,17 +55,17 @@ namespace iDeviceCrackr.Classes
                 try
                 {
                     Commands.ShutdownDevice.Execute();
-                    Tools.ShowMainMenu("Your device is shutting down.", true);
                 } catch(Exception) { }
+                Tools.ShowMainMenu(null, "Your device is shutting down.", true);
             })),
 
             new MenuItem(3, "Safe Mode", null, ConsoleKey.D3, new Action(delegate()
             {
                 try
                 {
-                    Commands.SafeModeDevice.Execute();
-                    Tools.ShowMainMenu("Your device is entering Safe Mode.", true);
+                    Commands.SafeModeDevice.Execute();                    
                 } catch(Exception) { }
+                Tools.ShowMainMenu(null, "Your device is entering Safe Mode.", true);
             }))
         });
     }

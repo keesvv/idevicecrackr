@@ -18,10 +18,11 @@ namespace iDeviceCrackr
             @"                                                                 " + "\n" +
             "";
 
-        public static string StringIndent { get; set; } = "   ";
+        public static string Indent { get; set; } = "   ";
 
         public static void ShowSplashScreen()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             using (var reader = new StringReader(SplashText))
             {
@@ -35,35 +36,91 @@ namespace iDeviceCrackr
             Thread.Sleep(300);
             Console.ResetColor();
             Console.Clear();
-            DisplaySplashText();
+            ShowSplashText();
         }
 
-        public static void DisplaySplashText()
+        public static void ShowSplashText()
         {
             Console.WriteLine(SplashText);
         }
 
-        public static void ShowMainMenu(string warningMessage = "", bool warnForNoResponse = false)
+        public static void ShowFatalError(string title, Exception exception, string fixHint = "")
+        {
+            Console.ResetColor();
+            Console.Clear();
+            ShowSplashText();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(Indent + "An error occured");
+            Console.WriteLine(Indent + "=======================================================");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(Indent + title);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(Indent + "=======================================================\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(Indent + "Detailed exception information:");
+            Console.WriteLine(Indent + "Localized message: " + exception.Message);
+            Console.WriteLine(Indent + "Error code: " + exception.HResult);
+            Console.WriteLine(Indent + "Exception source: " + exception.Source);
+
+            Console.WriteLine();
+
+            if(string.IsNullOrEmpty(fixHint) != true)
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine(Indent + "[Probable Solution] " + fixHint);
+            }
+
+            if(string.IsNullOrEmpty(exception.HelpLink) != true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(Indent + "More help available at " + exception.HelpLink + " .");
+            }
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\n" +
+                Indent + "Try restarting iDeviceCrackr, your Wi-Fi connection or" +
+                "\n" + Indent + "your computer to solve the problem."
+                );
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n" + Indent + "Press any key to quit iDeviceCrackr...");
+            Console.ResetColor();
+
+            Console.ReadKey(false);
+            Environment.Exit(1);
+        }
+
+        public static void ShowMainMenu(string errorMessage = "", string warningMessage = "", bool warnForNoResponse = false)
         {
             Console.Clear();
-            DisplaySplashText();
+            ShowSplashText();
 
-            if(warningMessage != "")
+            if (string.IsNullOrEmpty(errorMessage) != true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(StringIndent + "■  Warning: " + warningMessage);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(Indent + "■  Error: " + errorMessage);
                 Console.ResetColor();
             }
 
-            if(warnForNoResponse)
+            if (string.IsNullOrEmpty(warningMessage) != true)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(StringIndent + "■  Please note that the program may become unresponsive");
-                Console.WriteLine(StringIndent + "   and will not respond on further commands.");
+                Console.WriteLine(Indent + "■  Warning: " + warningMessage);
+                Console.ResetColor();
+            }
+
+            if (warnForNoResponse)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(Indent + "■  Please note that the program may become unresponsive");
+                Console.WriteLine(Indent + "   and will not respond on further commands.");
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(StringIndent + "■  ");
+            Console.Write(Indent + "■  ");
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.DarkGray;

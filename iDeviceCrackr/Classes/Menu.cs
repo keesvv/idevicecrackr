@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Renci.SshNet.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,17 +26,17 @@ namespace iDeviceCrackr
             {
                 Console.ResetColor();
                 Console.Clear();
-                Tools.DisplaySplashText();
+                Tools.ShowSplashText();
             }
             
             if (MenuTitleColor.HasValue) Console.ForegroundColor = MenuTitleColor.Value;
-            Console.WriteLine(Tools.StringIndent + $"-=+ [ {MenuTitle} ] +=-");
+            Console.WriteLine(Tools.Indent + $"-=+ [ {MenuTitle} ] +=-");
             Console.ResetColor();
 
             foreach (MenuItem item in Items)
             {
                 if (item.ForeColor.HasValue) Console.ForegroundColor = item.ForeColor.Value;
-                Console.WriteLine(Tools.StringIndent + $"[{item.Identifier}] {item.Title}");
+                Console.WriteLine(Tools.Indent + $"[{item.Identifier}] {item.Title}");
                 Console.ResetColor();
             }
 
@@ -44,7 +45,20 @@ namespace iDeviceCrackr
             {
                 if (pressedKey == item.Key)
                 {
-                    item.SelectAction.Invoke();
+                    try
+                    {
+                        item.SelectAction.Invoke();
+                    }
+
+                    catch (SshConnectionException)
+                    {
+                        Tools.ShowMainMenu("The device is not connected. Please wait for the device to reconnect.", null, true);
+                    }
+
+                    catch (SshOperationTimeoutException)
+                    {
+                        Tools.ShowMainMenu("Operation timed out. Please try again later.", null, false);
+                    }
                 }
             }
         }
