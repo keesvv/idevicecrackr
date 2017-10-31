@@ -42,7 +42,8 @@ All tools can be found in the *BigBoss* Repo.
 Of course you don't want to stay with the default password, but if you do, you can simply skip this step.
 To change the root password, open `MTerminal` or `Terminal` from your Homescreen.
 
-Then, simply type `su passwd` and enter the default password, which is `alpine` without any capital letters.
+Then, simply type `su root` and enter the default password, which is `alpine` without any capital letters.
+Once you have root access, type in `passwd`.
 
 Now you can change your password to whatever you like. Remember: this password is used for the connection!
 
