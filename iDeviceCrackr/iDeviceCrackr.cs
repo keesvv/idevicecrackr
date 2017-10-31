@@ -19,6 +19,16 @@ namespace iDeviceCrackr
         public static SshClient Client { get; set; }
         public static Commands Commands { get; set; }
 
+        // ======================================= \\
+        //   Set to true and assign credentials    \\
+
+        public static bool DeveloperMode = true;
+        public static string DeveloperHostname = "192.168.1.18";
+        public static string DeveloperPassword = "developer.xyz";
+
+        // ======================================= \\
+
+
         static void Main(string[] args)
         {
             AppDomain.CurrentDomain.ProcessExit += (o, ev) =>
@@ -28,7 +38,7 @@ namespace iDeviceCrackr
             };
 
             Tools.ShowSplashScreen();
-            SSH.Connect();
+            SSH.Connect(DeveloperMode);
 
             while (true)
             {

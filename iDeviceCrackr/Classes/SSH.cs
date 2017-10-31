@@ -9,14 +9,22 @@ namespace iDeviceCrackr.Classes
 {
     public class SSH
     {
-        public static void Connect()
+        public static void Connect(bool developerMode = false)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write(Tools.Indent + "IP Address: ");
-            Hostname = Console.ReadLine();
-            Console.Write(Tools.Indent + "Root password: ");
-            Password = Console.ReadLine();
-            Console.ResetColor();
+            if (developerMode != true)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(Tools.Indent + "IP Address: ");
+                Hostname = Console.ReadLine();
+                Console.Write(Tools.Indent + "Root password: ");
+                Password = Console.ReadLine();
+                Console.ResetColor();
+            }
+            else
+            {
+                Hostname = DeveloperHostname;
+                Password = DeveloperPassword;
+            }
 
             Console.Clear();
             Tools.ShowSplashText();

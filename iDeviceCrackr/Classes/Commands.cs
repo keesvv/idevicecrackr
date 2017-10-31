@@ -16,6 +16,10 @@ namespace iDeviceCrackr
         public SshCommand RetrieveDeviceName = client.CreateCommand("sbdevice -n");
         public SshCommand RetrieveDeviceUDID = client.CreateCommand("sbdevice -u");
 
+        // Battery information commands
+        public SshCommand RetrieveBatteryState = client.CreateCommand("sbdevice -s");
+        public SshCommand RetrieveBatteryLevel = client.CreateCommand("sbdevice -l");
+
         // System information commands
         public SshCommand RetrieveSystemName = client.CreateCommand("sbdevice -N");
         public SshCommand RetrieveSystemVersion = client.CreateCommand("sbdevice -V");

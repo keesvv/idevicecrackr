@@ -28,6 +28,8 @@ namespace iDeviceCrackr.Classes
                     Tools.Indent + $"Device Type: {Commands.RetrieveDeviceType.Execute()}" +
                     Tools.Indent + $"Device Name: {Commands.RetrieveDeviceName.Execute()}" +
                     Tools.Indent + $"Device UDID: {Commands.RetrieveDeviceUDID.Execute()}\n" +
+                    Tools.Indent + $"Battery State: {Commands.RetrieveBatteryState.Execute()}" +
+                    Tools.Indent + $"Battery Level: {Math.Round(float.Parse(Commands.RetrieveBatteryLevel.Execute()) * 100, 0)}\n\n" +
                     Tools.Indent + $"System Name: {Commands.RetrieveSystemName.Execute()}" +
                     Tools.Indent + $"System Version: {Commands.RetrieveSystemVersion.Execute()}\n" +
                     Tools.Indent + $"Press any key to return to the previous screen."
