@@ -1,5 +1,5 @@
 # idevicecrackr
-A full-featured tool for modifying a remote jailbroken iDevice.
+A full-featured tool for remotely modifying a remote jailbroken iDevice.
 
 #### What is iDeviceCrackr?
 iDeviceCrackr is a useful tool that you can use to change your iDevice the way you want, remotely.
