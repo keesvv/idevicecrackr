@@ -22,7 +22,7 @@ iDeviceCrackr sets up SSH connection between your computer and your iDevice. SSH
 - Show an overview of all installed Cydia Sources/Tweaks
 - Even more...
 
-#### How to set up iDeviceCrackr
+# Setup Guide
 First off, you need to be on the same Wi-Fi network on your iDevice and your computer.
 
 **Step 1**: Gather the required tools on Cydia
@@ -49,12 +49,12 @@ Now you can change your password to whatever you like. Remember: this password i
 
 **Step 3**: Enable SSH
 
-SSH is not enabled by default on your iDevice. If you have *OpenSSH*, *OpenSSL* and *SSH Connect* installed successfully,
+SSH is not enabled by default on your iDevice. Once you have *OpenSSH*, *OpenSSL* and *SSH Connect* installed successfully,
 you can go to Settings and at the top where you can find *Airplane Mode* and *Wi-Fi*, you'll see *SSH* between Wi-Fi and Bluetooth.
 
-Once you got there, simple enable the switch called *SSH*.
+Once you got there, simple enable the toggle called *SSH*.
 
-**Step 4**: Almost done!
+**Step 4**: Testing the connection
 
 Your iDevice is now ready to be connected over a remote connection. Please note that whenever you reboot your iDevice, *SSH* will be disabled automatically in the Settings app. To re-enable it, simple go to Settings > *SSH* > Enable.
 
@@ -64,4 +64,4 @@ If you have downloaded the latest version of iDeviceCrackr to your computer, ope
 
 Once you have entered the IP Address, you will be prompted for a password, which is the new password set in **Step 2**.
 
-Now you are good to go! If you have any questions or suggestions for me, you can leave me a message on my email address or open a new request at the Issues page.
+Now you are good to go! If you have any questions or suggestions for me, you can leave me a message on my email address or open a new issue at the Issues page.
